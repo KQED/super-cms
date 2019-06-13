@@ -1,0 +1,19 @@
+{
+    "master": {
+        "awscloudformation": {
+            "AuthRoleName": "super-cms-master-20190613134212-authRole",
+            "UnauthRoleArn": "arn:aws:iam::969064053837:role/super-cms-master-20190613134212-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::969064053837:role/super-cms-master-20190613134212-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "super-cms-master-20190613134212-deployment",
+            "UnauthRoleName": "super-cms-master-20190613134212-unauthRole",
+            "StackName": "super-cms-master-20190613134212",
+            "StackId": "arn:aws:cloudformation:us-east-1:969064053837:stack/super-cms-master-20190613134212/b90b56a0-8e1b-11e9-8935-0a5ca37ccc16"
+        },
+        "categories": {
+            "auth": {
+                "supercms85d296ec": {}
+            }
+        }
+    }
+}
