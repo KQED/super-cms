@@ -16,8 +16,17 @@ class Header extends Component {
     return (
       <HeaderNavigation>
         <NavigationList $align={ALIGN.left}>
-          <NavigationItem>Home</NavigationItem>
+          <NavigationItem>
+            {' '}
+            <Link href="/">Home</Link>
+          </NavigationItem>
         </NavigationList>
+        <NavigationList $align={ALIGN.left}>
+          <NavigationItem>
+            <Link href="/transcribe">Transcribe</Link>
+          </NavigationItem>
+        </NavigationList>
+        <NavigationList $align={ALIGN.center} />
         <NavigationList $align={ALIGN.right}>
           <NavigationItem>
             <Link href="" onClick={this.signOut}>

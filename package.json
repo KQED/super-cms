@@ -5,7 +5,10 @@
   "dependencies": {
     "aws-amplify": "^1.1.28",
     "aws-amplify-react": "^2.3.8",
+    "aws-sdk": "^2.475.0",
     "baseui": "^7.2.0",
+    "lodash.get": "^4.4.2",
+    "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

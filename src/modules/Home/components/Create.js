@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FileUploader } from 'baseui/file-uploader';
 import Storage from '@aws-amplify/storage';
 
@@ -69,7 +68,5 @@ class Create extends Component {
     );
   }
 }
-
-Create.propTypes = {};
 
 export default Create;
