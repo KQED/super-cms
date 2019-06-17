@@ -7,7 +7,6 @@ import {
   StyledNavigationList as NavigationList
 } from 'baseui/header-navigation';
 import { Link } from 'react-router-dom';
-import { StyledLink } from 'baseui/link';
 
 class Header extends Component {
   signOut = () => {
