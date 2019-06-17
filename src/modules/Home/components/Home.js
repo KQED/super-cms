@@ -5,9 +5,11 @@ import { FormControl } from 'baseui/form-control';
 import styles from './Home.module.scss';
 import { Button } from 'baseui/button';
 import { StatefulSelect } from 'baseui/select';
+import { Paragraph2 } from 'baseui/typography';
+import config from '../../../aws-exports';
 
 class Home extends Component {
-  state = { progressAmount: 0 };
+  state = { progressAmount: 0, uploadedUrl: '' };
 
   handleDrop = acceptedFiles => {
     this.setState({ fileToUpload: acceptedFiles[0] });
@@ -33,6 +35,8 @@ class Home extends Component {
       contentType: fileToUpload.type
     })
       .then(result => {
+        const url = `https://${config.aws_user_files_s3_bucket}.s3.amazonaws.com/public/${result.key}`;
+        this.setState({ uploadedUrl: url });
         console.log(result);
         this.reset();
       })
@@ -48,7 +52,7 @@ class Home extends Component {
   };
 
   render() {
-    const { progressAmount } = this.state;
+    const { progressAmount, uploadedUrl } = this.state;
     return (
       <div className={styles.home}>
         <div className={styles.home_Container}>
@@ -101,6 +105,7 @@ class Home extends Component {
               Save
             </Button>
           </FormControl>
+          <Paragraph2>{uploadedUrl}</Paragraph2>
         </div>
       </div>
     );

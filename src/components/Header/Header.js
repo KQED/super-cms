@@ -6,7 +6,8 @@ import {
   StyledNavigationItem as NavigationItem,
   StyledNavigationList as NavigationList
 } from 'baseui/header-navigation';
-import { StyledLink as Link } from 'baseui/link';
+import { Link } from 'react-router-dom';
+import { StyledLink } from 'baseui/link';
 
 class Header extends Component {
   signOut = () => {
@@ -17,21 +18,18 @@ class Header extends Component {
       <HeaderNavigation>
         <NavigationList $align={ALIGN.left}>
           <NavigationItem>
-            {' '}
-            <Link href="/">Home</Link>
+            <Link to="/">Home</Link>
           </NavigationItem>
         </NavigationList>
         <NavigationList $align={ALIGN.left}>
           <NavigationItem>
-            <Link href="/transcribe">Transcribe</Link>
+            <Link to="/transcribe">Transcribe</Link>
           </NavigationItem>
         </NavigationList>
         <NavigationList $align={ALIGN.center} />
         <NavigationList $align={ALIGN.right}>
           <NavigationItem>
-            <Link href="" onClick={this.signOut}>
-              Logout
-            </Link>
+            <Link onClick={this.signOut}>Logout</Link>
           </NavigationItem>
         </NavigationList>
       </HeaderNavigation>

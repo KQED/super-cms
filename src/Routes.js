@@ -9,8 +9,8 @@ import styles from './Routes.module.scss';
 const Routes = () => {
   return (
     <div>
-      <Header />
       <Router>
+        <Header />
         <div className={styles.route}>
           <Route path="/" exact component={Home} />
           <Route path="/create" component={Create} />
