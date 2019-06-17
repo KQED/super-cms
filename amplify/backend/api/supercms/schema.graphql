@@ -1,4 +1,4 @@
-type Todo @model {
+type SimpleCms @model {
   id: ID!
   name: String!
   description: String

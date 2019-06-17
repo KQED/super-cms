@@ -1,24 +1,24 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTodo = `subscription OnCreateTodo {
-  onCreateTodo {
+export const onCreateSimpleCms = `subscription OnCreateSimpleCms {
+  onCreateSimpleCms {
     id
     name
     description
   }
 }
 `;
-export const onUpdateTodo = `subscription OnUpdateTodo {
-  onUpdateTodo {
+export const onUpdateSimpleCms = `subscription OnUpdateSimpleCms {
+  onUpdateSimpleCms {
     id
     name
     description
   }
 }
 `;
-export const onDeleteTodo = `subscription OnDeleteTodo {
-  onDeleteTodo {
+export const onDeleteSimpleCms = `subscription OnDeleteSimpleCms {
+  onDeleteSimpleCms {
     id
     name
     description
