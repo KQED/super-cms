@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Auth } from 'aws-amplify';
+import { StyledLink } from 'baseui/link';
 import {
   HeaderNavigation,
   ALIGN,
@@ -17,18 +18,22 @@ class Header extends Component {
       <HeaderNavigation>
         <NavigationList $align={ALIGN.left}>
           <NavigationItem>
-            <Link to="/">Home</Link>
+            <StyledLink to="/" $as={Link}>
+              Home
+            </StyledLink>
           </NavigationItem>
         </NavigationList>
         <NavigationList $align={ALIGN.left}>
           <NavigationItem>
-            <Link to="/transcribe">Transcribe</Link>
+            <StyledLink to="/transcribe" $as={Link}>
+              Transcribe
+            </StyledLink>
           </NavigationItem>
         </NavigationList>
         <NavigationList $align={ALIGN.center} />
         <NavigationList $align={ALIGN.right}>
           <NavigationItem>
-            <Link onClick={this.signOut}>Logout</Link>
+            <StyledLink onClick={this.signOut}>Logout</StyledLink>
           </NavigationItem>
         </NavigationList>
       </HeaderNavigation>
