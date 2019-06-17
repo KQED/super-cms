@@ -27,7 +27,9 @@ class Home extends Component {
 
   save = () => {
     const { fileToUpload } = this.state;
-    Storage.put(`userimages/${fileToUpload.name}`, fileToUpload, {
+    const bucketKey = this.state.value[0].id;
+    console.log(this.state);
+    Storage.put(`${bucketKey}/${fileToUpload.name}`, fileToUpload, {
       contentType: fileToUpload.type
     })
       .then(result => {
@@ -53,16 +55,15 @@ class Home extends Component {
           <FormControl>
             <StatefulSelect
               options={[
-                { id: 'AliceBlue', color: '#F0F8FF' },
-                { id: 'AntiqueWhite', color: '#FAEBD7' },
-                { id: 'Aqua', color: '#00FFFF' },
-                { id: 'Aquamarine', color: '#7FFFD4' },
-                { id: 'Azure', color: '#F0FFFF' },
-                { id: 'Beige', color: '#F5F5DC' }
+                { name: 'The Bay', id: 'the-bay' },
+                { name: 'Bay Curious', id: 'bay-curios' },
+                { name: 'The Cooler', id: 'the-cooler' },
+                { name: 'Forum', id: 'forum' }
               ]}
-              labelKey="id"
-              valueKey="color"
-              onChange={event => console.log(event)}
+              labelKey="name"
+              valueKey="id"
+              onChange={({ value }) => this.setState({ value })}
+              value={this.state.value}
             />
           </FormControl>
           <FormControl>
