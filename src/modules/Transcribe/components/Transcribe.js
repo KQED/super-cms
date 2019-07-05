@@ -9,27 +9,29 @@ import { FileUploader } from 'baseui/file-uploader';
 import config from '../../../aws-exports';
 import styles from './Transcribe.module.scss';
 import { Block } from 'baseui/block';
-import { Paragraph2 } from 'baseui/typography';
+import TranscriptEditor from '@bbc/react-transcript-editor';
 
 class Transcribe extends Component {
   constructor(props) {
     super(props);
     this.state = {
       inProgress: false,
-      transcribed: '',
+      mediaUrl: '',
+      transcribedJsonOutput: '',
       progressAmount: 0
     };
   }
 
   handleDrop = acceptedFiles => {
     this.setState({ inProgress: true });
-    Storage.put(`userimages/${acceptedFiles[0].name}`, acceptedFiles[0], {
+    Storage.put(`transcribe/${acceptedFiles[0].name}`, acceptedFiles[0], {
       contentType: acceptedFiles[0].type
     })
       .then(result => {
         console.log(result);
         const url = `https://${config.aws_user_files_s3_bucket}.s3.amazonaws.com/public/${result.key}`;
         console.log(url);
+        this.setState({ mediaUrl: url });
         this.transcribe(url);
       })
       .catch(err => {
@@ -49,11 +51,10 @@ class Transcribe extends Component {
     });
     response = await response.text();
 
-    const transcribed = get(
-      JSON.parse(JSON.parse(response)),
-      'results.transcripts[0].transcript'
-    );
-    this.setState({ transcribed: transcribed, inProgress: false });
+    this.setState({
+      transcribedJsonOutput: JSON.parse(JSON.parse(response)),
+      inProgress: false
+    });
   };
 
   transcribe = async url => {
@@ -72,14 +73,22 @@ class Transcribe extends Component {
       TranscriptionJobName: Math.random()
         .toString(36)
         .substr(2, 9),
-      MediaFormat: 'mp3'
+      MediaFormat: 'mp3',
+      Settings: {
+        ShowSpeakerLabels: true,
+        MaxSpeakerLabels: 6
+      }
     };
 
     try {
       transcribeJob = await transcribeservice
         .startTranscriptionJob(params)
         .promise();
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
+
+    console.log(transcribeJob);
 
     //check wheather transcriprion job in done
     //This can also be done by socket, but considering scope of this application, its fine
@@ -111,7 +120,8 @@ class Transcribe extends Component {
     } catch (e) {}
   };
   render() {
-    const { inProgress, transcribed } = this.state;
+    const { inProgress, mediaUrl, transcribedJsonOutput } = this.state;
+    console.log(this.state);
     return (
       <div className={styles.transcribe}>
         <div className={styles.transcribe_Container}>
@@ -166,7 +176,15 @@ class Transcribe extends Component {
               }}
             />
           )}
-          <Paragraph2>{transcribed}</Paragraph2>
+          {mediaUrl && transcribedJsonOutput && (
+            <TranscriptEditor
+              transcriptData={transcribedJsonOutput}
+              mediaUrl={mediaUrl}
+              isEditable={true}
+              spellCheck={false}
+              sttJsonType={'amazontranscribe'}
+            />
+          )}
         </div>
       </div>
     );

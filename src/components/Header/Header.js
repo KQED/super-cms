@@ -16,16 +16,16 @@ class Header extends Component {
   render() {
     return (
       <HeaderNavigation>
+        {/*<NavigationList $align={ALIGN.left}>*/}
+        {/*  <NavigationItem>*/}
+        {/*    <StyledLink to="/" $as={Link}>*/}
+        {/*      Home*/}
+        {/*    </StyledLink>*/}
+        {/*  </NavigationItem>*/}
+        {/*</NavigationList>*/}
         <NavigationList $align={ALIGN.left}>
           <NavigationItem>
             <StyledLink to="/" $as={Link}>
-              Home
-            </StyledLink>
-          </NavigationItem>
-        </NavigationList>
-        <NavigationList $align={ALIGN.left}>
-          <NavigationItem>
-            <StyledLink to="/transcribe" $as={Link}>
               Transcribe
             </StyledLink>
           </NavigationItem>

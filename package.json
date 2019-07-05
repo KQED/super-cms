@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bbc/react-transcript-editor": "^1.0.4",
     "aws-amplify": "^1.1.28",
     "aws-amplify-react": "^2.3.8",
     "aws-sdk": "^2.475.0",
