@@ -88,8 +88,6 @@ class Transcribe extends Component {
       console.error(e);
     }
 
-    console.log(transcribeJob);
-
     //check wheather transcriprion job in done
     //This can also be done by socket, but considering scope of this application, its fine
     let TranscriptionJobName = get(
@@ -177,13 +175,15 @@ class Transcribe extends Component {
             />
           )}
           {mediaUrl && transcribedJsonOutput && (
-            <TranscriptEditor
-              transcriptData={transcribedJsonOutput}
-              mediaUrl={mediaUrl}
-              isEditable={true}
-              spellCheck={false}
-              sttJsonType={'amazontranscribe'}
-            />
+            <div className={styles.transcribe_Editor}>
+              <TranscriptEditor
+                transcriptData={transcribedJsonOutput}
+                mediaUrl={mediaUrl}
+                isEditable={true}
+                spellCheck={false}
+                sttJsonType={'amazontranscribe'}
+              />
+            </div>
           )}
         </div>
       </div>
