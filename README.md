@@ -1,5 +1,7 @@
 # Super CMS
 
+URL [https://master.d57laangt7xnv.amplifyapp.com/](https://master.d57laangt7xnv.amplifyapp.com/)
+
 This is an replacement for simple cms. This was build on aws amplify (https://aws.amazon.com/amplify/)
 
 ### Development
