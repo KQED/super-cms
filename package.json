@@ -6,7 +6,7 @@
     "@bbc/react-transcript-editor": "^1.0.4",
     "aws-amplify": "^1.1.28",
     "aws-amplify-react": "^2.3.8",
-    "aws-sdk": "^2.475.0",
+    "aws-sdk": "^2.814.0",
     "baseui": "^7.2.0",
     "lodash.get": "^4.4.2",
     "node-sass": "^4.12.0",
